@@ -1,13 +1,13 @@
-package cs.csula.edu.eventservice;
+package cs.csula.edu.cloudservice;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EventServiceApplication {
+public class CloudServiceApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(EventServiceApplication.class, args);
+        SpringApplication.run(CloudServiceApplication.class, args);
     }
 
 }
