@@ -10,7 +10,7 @@ services:
     environment:
       - POSTGRES_USER=admin
       - POSTGRES_PASSWORD=admin
-      - POSTGRES_DB=admin
+      - POSTGRES_DB=cloudservice
     #   Maps port 54320 (localhost) to port 5432 on the container. You can change the ports to fix your needs.
     ports:
       - "54320:5432"
