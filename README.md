@@ -18,3 +18,8 @@ This command just stops a currently running database.
 ## Stop Remove
 This command stops the currently running database and removes it completely. The data is gone.
 * `docker-compose down`
+
+# Swagger
+The server hosts a user interface that lets us hit the REST endpoints. Hit the URL below after starting the server.
+
+* http://localhost:8080/swagger-ui.html
