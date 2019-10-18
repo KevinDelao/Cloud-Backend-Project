@@ -8,7 +8,7 @@
   <artifactId>cloud-service</artifactId>
   <version>1.0</version>
   <name>cloud-service</name>
-  <description>Cloud service for VR-rehab backend</description>
+  <description>Cloud Service for VR-Rehab Backend Project</description>
 
   <parent>
     <groupId>org.springframework.boot</groupId>
