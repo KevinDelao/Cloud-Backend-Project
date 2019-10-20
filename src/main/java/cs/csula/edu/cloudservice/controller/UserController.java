@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.controller;
 
+import cs.csula.edu.cloudservice.dto.user.UserPostDto;
 import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.service.UserService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,7 @@ public class UserController {
   }
 
   @PostMapping
-  public User createUser(User user) {
-    return userService.createUser(user);
+  public User createUser(UserPostDto userPostDto) {
+    return userService.createUser(userPostDto);
   }
 }
