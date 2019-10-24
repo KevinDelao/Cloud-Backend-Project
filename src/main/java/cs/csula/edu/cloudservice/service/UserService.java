@@ -7,8 +7,12 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 @Service
+<<<<<<< HEAD
 public class UserService
 {
+=======
+public class UserService {
+>>>>>>> 11067afd8969226b935dd16838067d48faf66ff2
 
   private final UserRepository userRepository;
 
