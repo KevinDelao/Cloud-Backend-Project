@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.controller;
 
 
+import cs.csula.edu.cloudservice.dto.positionEvent.PositionEventPostDto;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.service.PositionEventService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,7 +19,7 @@ public class PositionEventController
     }
 
     @PostMapping
-    public PositionEvent createPositionEvent(PositionEvent positionEvent) {
-        return positionEventService.createPositionEvent(positionEvent);
+    public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto) {
+        return positionEventService.createPositionEvent(positionEventPostDto);
     }
 }

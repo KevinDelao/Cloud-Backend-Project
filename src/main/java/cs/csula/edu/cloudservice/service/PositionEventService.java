@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.service;
 
+import cs.csula.edu.cloudservice.dto.positionEvent.PositionEventPostDto;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.repository.PositionEventRepository;
 import org.modelmapper.ModelMapper;
@@ -15,9 +16,9 @@ public class PositionEventService
         this.modelMapper = modelMapper;
     }
 
-    public PositionEvent createPositionEvent(PositionEvent positionEvent)
+    public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto)
     {
-        PositionEvent positionEvent1 = modelMapper.map(positionEvent, PositionEvent.class);
-        return positionEventRepository.save(positionEvent1);
+        PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
+        return positionEventRepository.save(positionEvent);
     }
 }

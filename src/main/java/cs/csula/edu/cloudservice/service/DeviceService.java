@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.service;
 
 
+import cs.csula.edu.cloudservice.dto.device.DevicePostDto;
 import cs.csula.edu.cloudservice.entity.device.Device;
 
 import org.modelmapper.ModelMapper;
@@ -12,14 +13,15 @@ public class DeviceService
 {
     private final DeviceRepository deviceRepository;
     private final ModelMapper modelMapper;
+
     public DeviceService(DeviceRepository deviceRepository, ModelMapper modelMapper) {
         this.deviceRepository = deviceRepository;
         this.modelMapper = modelMapper;
     }
-    public Device createDevice(Device device)
+    public Device createDevice(DevicePostDto devicePostDto)
     {
-        Device device1 = modelMapper.map(device, Device.class);
-        return deviceRepository.save(device1);
+        Device device = modelMapper.map(devicePostDto, Device.class);
+        return deviceRepository.save(device);
     }
 
 

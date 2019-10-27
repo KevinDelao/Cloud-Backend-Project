@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.controller;
 
+import cs.csula.edu.cloudservice.dto.device.DevicePostDto;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.service.DeviceService;
 
@@ -18,7 +19,7 @@ public class DeviceController
     }
 
     @PostMapping
-    public Device createDevice(Device device) {
-        return deviceService.createDevice(device);
+    public Device createDevice(DevicePostDto devicePostDto) {
+        return deviceService.createDevice(devicePostDto);
     }
 }
