@@ -1,5 +1,11 @@
 package cs.csula.edu.cloudservice.dto.positionEvent;
 
+import cs.csula.edu.cloudservice.entity.device.Device;
+import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
+
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 public class PositionEventPostDto
 {
     public int getY() {
@@ -29,5 +35,30 @@ public class PositionEventPostDto
     private int x;
     private int y;
     private int z;
+
+    @ManyToOne
+    @JoinColumn
+    private Device device;
+
+    @ManyToOne
+    @JoinColumn
+    private GameSession gameSession;
+
+    public Device getDevice() {
+        return device;
+    }
+
+    public void setDevice(Device device) {
+        this.device = device;
+    }
+
+    public GameSession getGameSession() {
+        return gameSession;
+    }
+
+    public void setGameSession(GameSession gameSession) {
+        this.gameSession = gameSession;
+    }
+
 
 }

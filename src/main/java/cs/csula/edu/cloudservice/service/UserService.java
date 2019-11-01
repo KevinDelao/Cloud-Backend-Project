@@ -6,6 +6,8 @@ import cs.csula.edu.cloudservice.repository.UserRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.UUID;
+
 @Service
 
 
@@ -26,5 +28,10 @@ public class UserService {
     User user = modelMapper.map(userPostDto, User.class);
     return userRepository.save(user);
   }
-
+  public User getUser(UUID id)
+  {
+    User user = userRepository.findById(id).get();
+   // User user = modelMapper.map(userPostDto, User.class);
+    return user;
+  }
 }
