@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.service;
 
+import cs.csula.edu.cloudservice.dto.gameSession.GameSessionPostDto;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
 import org.springframework.stereotype.Service;
@@ -17,10 +18,10 @@ public class GameSessionService
     }
 
 
-    public GameSession createGameSession(GameSession gameSession)
+    public GameSession createGameSession(GameSessionPostDto gameSessionPostDto)
     {
-        GameSession gameSession1 = modelMapper.map(gameSession, GameSession.class);
-        return gameSessionRepository.save(gameSession1);
+        GameSession gameSession = modelMapper.map(gameSessionPostDto, GameSession.class);
+        return gameSessionRepository.save(gameSession);
     }
 
 }
