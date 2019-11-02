@@ -1,5 +1,7 @@
 package cs.csula.edu.cloudservice.dto.gameSession;
 
+import cs.csula.edu.cloudservice.entity.user.User;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
@@ -10,6 +12,11 @@ public class GameSessionPostDto
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
+    /*
+    @ManyToOne
+    @JoinColumn
+    private User user;
+    */
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDateTime;
 

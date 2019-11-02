@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.controller;
 
+import cs.csula.edu.cloudservice.dto.gameSession.GameSessionPostDto;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.service.GameSessionService;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,9 +17,9 @@ public class GameSessionController
         this.gameSessionService = gameSessionService;
     }
     @PostMapping
-    public GameSession createGameSession(GameSession gameSession)
+    public GameSession createGameSession(GameSessionPostDto gameSessionPostDto)
     {
-        return gameSessionService.createGameSession(gameSession);
+        return gameSessionService.createGameSession(gameSessionPostDto);
     }
 
 }
