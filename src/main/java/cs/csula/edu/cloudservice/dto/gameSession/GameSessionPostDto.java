@@ -8,25 +8,21 @@ import java.util.UUID;
 
 public class GameSessionPostDto
 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
 
-    /*
-    @ManyToOne
-    @JoinColumn
+
     private User user;
-    */
+
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Temporal(TemporalType.TIMESTAMP)
     private Date creationDateTime;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public Date getCreationDateTime() {
         return creationDateTime;

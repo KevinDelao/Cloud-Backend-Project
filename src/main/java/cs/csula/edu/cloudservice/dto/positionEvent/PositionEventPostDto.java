@@ -36,12 +36,10 @@ public class PositionEventPostDto
     private int y;
     private int z;
 
-    @ManyToOne
-    @JoinColumn
+
     private Device device;
 
-    @ManyToOne
-    @JoinColumn
+
     private GameSession gameSession;
 
     public Device getDevice() {
