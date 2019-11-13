@@ -28,6 +28,7 @@ public class GameSessionService
 
     public GameSession createGameSession(GameSessionPostDto gameSessionPostDto)
     {
+        //saves user ID
         userID = UUID.fromString(gameSessionPostDto.getUserID());
         gameSessionPostDto.setUser(userRepository.findById(userID).get());
         GameSession gameSession = modelMapper.map(gameSessionPostDto, GameSession.class);
