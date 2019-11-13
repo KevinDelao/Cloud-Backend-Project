@@ -9,9 +9,6 @@ import org.springframework.stereotype.Service;
 import java.util.UUID;
 
 @Service
-
-
-
 public class UserService {
 
 
@@ -31,7 +28,6 @@ public class UserService {
   public User getUser(UUID id)
   {
     User user = userRepository.findById(id).get();
-   // User user = modelMapper.map(userPostDto, User.class);
     return user;
   }
 }

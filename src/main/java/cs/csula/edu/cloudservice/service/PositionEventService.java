@@ -19,7 +19,8 @@ public class PositionEventService
     private final DeviceRepository deviceRepository;
     private final GameSessionRepository gameSessionRepository;
     private final ModelMapper modelMapper;
-
+    private UUID gameID;
+    private UUID deviceID;
     public PositionEventService(PositionEventRepository positionEventRepository,DeviceRepository deviceRepository,GameSessionRepository gameSessionRepository, ModelMapper modelMapper) {
         this.positionEventRepository = positionEventRepository;
         this.modelMapper = modelMapper;
@@ -27,18 +28,13 @@ public class PositionEventService
         this.gameSessionRepository=gameSessionRepository;
     }
 
-    public Device getDeviceByID(UUID deviceID)
-    {
-        Device device = deviceRepository.findById(deviceID).get();
-        return device;
-    }
-    public GameSession getGameSessionByID(UUID gameID)
-    {
-        GameSession gameSession = gameSessionRepository.findById(gameID).get();
-        return gameSession;
-    }
+
     public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto)
     {
+        gameID = UUID.fromString(positionEventPostDto.getDeviceID());
+        deviceID = UUID.fromString(positionEventPostDto.getGameID());
+        positionEventPostDto.setDevice(deviceRepository.findById(deviceID).get());
+        positionEventPostDto.setGameSession(gameSessionRepository.findById(gameID).get());
         PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
         return positionEventRepository.save(positionEvent);
     }

@@ -36,10 +36,27 @@ public class PositionEventPostDto
     private int y;
     private int z;
 
+    private String deviceID;
+
+    public String getDeviceID() {
+        return deviceID;
+    }
+
+    public void setDeviceID(String deviceID) {
+        this.deviceID = deviceID;
+    }
+
+    public String getGameID() {
+        return gameID;
+    }
+
+    public void setGameID(String gameID) {
+        this.gameID = gameID;
+    }
 
     private Device device;
 
-
+    private String gameID;
     private GameSession gameSession;
 
     public Device getDevice() {

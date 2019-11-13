@@ -5,6 +5,7 @@ import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.service.DeviceService;
 
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,7 +20,7 @@ public class DeviceController
     }
 
     @PostMapping
-    public Device createDevice(DevicePostDto devicePostDto) {
+    public Device createDevice(@RequestBody DevicePostDto devicePostDto) {
         return deviceService.createDevice(devicePostDto);
     }
 }

@@ -10,6 +10,7 @@ public class GameSessionPostDto
 {
 
 
+    private String userID;
     private User user;
 
     public User getUser() {
@@ -30,6 +31,13 @@ public class GameSessionPostDto
 
     public void setCreationDateTime(Date creationDateTime) {
         this.creationDateTime = creationDateTime;
+    }
+    public String getUserID() {
+        return userID;
+    }
+
+    public void setUserID(String userID) {
+        this.userID = userID;
     }
 
 
