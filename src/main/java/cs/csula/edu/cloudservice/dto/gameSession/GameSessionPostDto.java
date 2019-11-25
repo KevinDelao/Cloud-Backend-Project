@@ -8,8 +8,6 @@ import java.util.UUID;
 
 public class GameSessionPostDto
 {
-
-
     private String userID;
     private User user;
     String calibrationStage;

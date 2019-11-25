@@ -5,6 +5,8 @@ import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.service.GameSessionService;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Map;
+
 @RestController
 @RequestMapping(PathConstants.VERSION + PathConstants.GameSession)
 public class GameSessionController
@@ -14,6 +16,13 @@ public class GameSessionController
     {
         this.gameSessionService = gameSessionService;
     }
+    @PutMapping("/{id}")
+    public GameSession updateGameSession(@PathVariable String id, @RequestBody Map<String, Object> update)
+    {
+
+      return gameSessionService.updateGameSession(id,update);
+    }
+
     @PostMapping
     public GameSession createGameSession(@RequestBody GameSessionPostDto gameSessionPostDto)
     {
