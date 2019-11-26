@@ -31,8 +31,8 @@ public class PositionEventService
 
     public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto)
     {
-        gameID = UUID.fromString(positionEventPostDto.getDeviceID());
-        deviceID = UUID.fromString(positionEventPostDto.getGameID());
+        deviceID  = UUID.fromString(positionEventPostDto.getDeviceID());
+        gameID  = UUID.fromString(positionEventPostDto.getGameID());
         positionEventPostDto.setDevice(deviceRepository.findById(deviceID).get());
         positionEventPostDto.setGameSession(gameSessionRepository.findById(gameID).get());
         PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
