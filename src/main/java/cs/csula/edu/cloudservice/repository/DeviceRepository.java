@@ -10,4 +10,6 @@ import org.springframework.stereotype.Repository;
 public interface DeviceRepository extends JpaRepository<Device, UUID> {
 
   int countDevicesByName(String name);
+
+  Optional<Device> getDeviceByName(String name);
 }

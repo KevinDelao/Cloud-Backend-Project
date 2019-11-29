@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.entity.gamesession;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.user.User;
 import java.util.Date;
@@ -26,11 +27,14 @@ public class GameSession {
   private Date creationDateTime;
 
   @OneToMany(mappedBy = "gameSession")
+  @JsonIgnore
   private List<PositionEvent> positionEvents;
 
   @ManyToOne
   @JoinColumn
+  @JsonIgnore
   private User user;
+
   String calibrationStage;
   int score;
   int rounds;

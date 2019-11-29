@@ -1,7 +1,10 @@
 package cs.csula.edu.cloudservice.dto.gameSession;
 
+import javax.validation.constraints.NotEmpty;
+
 public class GameSessionPostDto {
 
+  @NotEmpty
   private String userID;
   String calibrationStage;
   int score;

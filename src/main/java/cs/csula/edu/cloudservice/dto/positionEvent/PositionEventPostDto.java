@@ -1,13 +1,17 @@
 package cs.csula.edu.cloudservice.dto.positionEvent;
 
+import javax.validation.constraints.NotEmpty;
+
 public class PositionEventPostDto {
 
   private int x;
   private int y;
   private int z;
 
+  @NotEmpty
   private String deviceId;
 
+  @NotEmpty
   private String gameId;
 
   public int getX() {

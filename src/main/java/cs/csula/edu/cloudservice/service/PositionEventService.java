@@ -15,13 +15,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class PositionEventService {
 
+  private static final String DEVICE_NOT_FOUND = "Game session could not be linked to non-existent device with id %s.";
+  private static final String GAME_SESSION_NOT_FOUND = "Game session could not be linked to non-existent game session with id %s.";
+
   private final PositionEventRepository positionEventRepository;
   private final DeviceRepository deviceRepository;
   private final GameSessionRepository gameSessionRepository;
   private final ModelMapper modelMapper;
-
-  private static final String DEVICE_NOT_FOUND = "Device with id %s not found.";
-  private static final String GAME_SESSION_NOT_FOUND = "Game session with id %s not found.";
 
   public PositionEventService(PositionEventRepository positionEventRepository,
       DeviceRepository deviceRepository, GameSessionRepository gameSessionRepository,

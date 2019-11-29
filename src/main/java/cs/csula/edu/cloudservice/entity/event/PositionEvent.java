@@ -1,7 +1,6 @@
 package cs.csula.edu.cloudservice.entity.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import java.util.UUID;

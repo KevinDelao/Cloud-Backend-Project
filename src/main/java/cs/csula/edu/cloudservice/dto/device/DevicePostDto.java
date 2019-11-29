@@ -7,9 +7,6 @@ public class DevicePostDto {
   @NotEmpty
   private String name;
 
-  @NotEmpty
-  private String userId;
-
   public String getName() {
     return name;
   }
@@ -18,11 +15,4 @@ public class DevicePostDto {
     this.name = name;
   }
 
-  public String getUserId() {
-    return userId;
-  }
-
-  public void setUserId(String userId) {
-    this.userId = userId;
-  }
 }

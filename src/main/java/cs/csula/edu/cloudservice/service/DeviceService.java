@@ -17,6 +17,7 @@ public class DeviceService {
 
   private static final String DEVICE_USER_NOT_FOUND = "Device cannot be linked to non existent user id %s";
   private static final String DEVICE_ALREADY_EXISTS = "Device with name %s already exists";
+  private static final String DEVICE_NOT_FOUND = "Device with name %s not found";
 
   private final DeviceRepository deviceRepository;
   private final UserService userService;
@@ -32,28 +33,16 @@ public class DeviceService {
   public Device createDevice(DevicePostDto devicePostDto) {
     validateDevice(devicePostDto.getName());
     Device device = modelMapper.map(devicePostDto, Device.class);
-    device.setUser(getUser(devicePostDto.getUserId()));
     return deviceRepository.save(device);
+  }
+
+  public Device getDeviceByName(String name) {
+    return deviceRepository.getDeviceByName(name).orElseThrow(() -> new NotFoundException(String.format(DEVICE_NOT_FOUND, name)));
   }
 
   private void validateDevice(String name) {
     if (deviceRepository.countDevicesByName(name) > 0) {
       throw new ConflictException(String.format(DEVICE_ALREADY_EXISTS, name));
-    }
-  }
-
-  private User getUser(String userId) {
-    UUID userUuid;
-    try {
-      userUuid = UUID.fromString(userId);
-    } catch (IllegalArgumentException ex) {
-      throw new EntityNotProcessableException(String.format(DEVICE_USER_NOT_FOUND, userId));
-    }
-
-    try {
-      return userService.getUser(userUuid);
-    } catch (NotFoundException ex) {
-      throw new EntityNotProcessableException(String.format(DEVICE_USER_NOT_FOUND, userId));
     }
   }
 }
