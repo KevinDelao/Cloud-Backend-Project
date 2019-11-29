@@ -15,9 +15,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeviceService {
 
-  private static final String DEVICE_USER_NOT_FOUND = "Device cannot be linked to non existent user id %s";
-  private static final String DEVICE_ALREADY_EXISTS = "Device with name %s already exists";
-  private static final String DEVICE_NOT_FOUND = "Device with name %s not found";
+  private static final String DEVICE_USER_NOT_FOUND = "DEVICE cannot be linked to non existent user id %s";
+  private static final String DEVICE_ALREADY_EXISTS = "DEVICE with name %s already exists";
+  private static final String DEVICE_NOT_FOUND = "DEVICE with name %s not found";
 
   private final DeviceRepository deviceRepository;
   private final UserService userService;

@@ -16,11 +16,10 @@ import org.springframework.web.server.ResponseStatusException;
 
 
 @RestController
-@RequestMapping(PathConstants.VERSION + PathConstants.PositionEvent)
+@RequestMapping(PathConstants.VERSION + PathConstants.POSITION_EVENT)
 public class PositionEventController {
 
   private final PositionEventService positionEventService;
-
 
   public PositionEventController(PositionEventService positionEventService) {
     this.positionEventService = positionEventService;
@@ -29,7 +28,8 @@ public class PositionEventController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public PositionEvent createPositionEvent(@Valid @RequestBody PositionEventPostDto positionEventPostDto) {
+  public PositionEvent createPositionEvent(
+      @Valid @RequestBody PositionEventPostDto positionEventPostDto) {
     try {
       return positionEventService.createPositionEvent(positionEventPostDto);
     } catch (EntityNotProcessableException ex) {

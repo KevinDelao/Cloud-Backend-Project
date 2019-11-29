@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(PathConstants.VERSION + PathConstants.Device)
+@RequestMapping(PathConstants.VERSION + PathConstants.DEVICE)
 public class DeviceController {
 
   private final DeviceService deviceService;

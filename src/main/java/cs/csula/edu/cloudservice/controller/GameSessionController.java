@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
-@RequestMapping(PathConstants.VERSION + PathConstants.GameSession)
+@RequestMapping(PathConstants.VERSION + PathConstants.GAME_SESSION)
 public class GameSessionController {
 
   private final GameSessionService gameSessionService;
