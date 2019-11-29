@@ -28,10 +28,10 @@ public class PositionEventController {
 
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
-  public PositionEvent createPositionEvent(
+  public void createPositionEvent(
       @Valid @RequestBody PositionEventPostDto positionEventPostDto) {
     try {
-      return positionEventService.createPositionEvent(positionEventPostDto);
+      positionEventService.createPositionEvent(positionEventPostDto);
     } catch (EntityNotProcessableException ex) {
       throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage(), ex);
     }
