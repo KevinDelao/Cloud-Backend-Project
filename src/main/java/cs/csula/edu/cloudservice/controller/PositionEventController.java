@@ -23,9 +23,7 @@ public class PositionEventController {
   }
 
   @PostMapping
-
   public PositionEvent createPositionEvent(@RequestBody PositionEventPostDto positionEventPostDto) {
-
     return positionEventService.createPositionEvent(positionEventPostDto);
   }
 }

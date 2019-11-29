@@ -16,8 +16,6 @@ public class PositionEventService {
   private final DeviceRepository deviceRepository;
   private final GameSessionRepository gameSessionRepository;
   private final ModelMapper modelMapper;
-  private UUID gameID;
-  private UUID deviceID;
 
   public PositionEventService(PositionEventRepository positionEventRepository,
       DeviceRepository deviceRepository, GameSessionRepository gameSessionRepository,
@@ -30,11 +28,12 @@ public class PositionEventService {
 
 
   public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto) {
-    deviceID = UUID.fromString(positionEventPostDto.getDeviceID());
-    gameID = UUID.fromString(positionEventPostDto.getGameID());
-    positionEventPostDto.setDevice(deviceRepository.findById(deviceID).get());
-    positionEventPostDto.setGameSession(gameSessionRepository.findById(gameID).get());
+    UUID deviceID = UUID.fromString(positionEventPostDto.getDeviceID());
+    UUID gameID = UUID.fromString(positionEventPostDto.getGameID());
     PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
+
+    positionEvent.setDevice(deviceRepository.findById(deviceID).get());
+    positionEvent.setGameSession(gameSessionRepository.findById(gameID).get());
     return positionEventRepository.save(positionEvent);
   }
 }
