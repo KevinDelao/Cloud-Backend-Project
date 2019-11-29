@@ -1,14 +1,8 @@
 package cs.csula.edu.cloudservice.dto.gameSession;
 
-import cs.csula.edu.cloudservice.entity.user.User;
-import java.util.Date;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
 public class GameSessionPostDto {
 
   private String userID;
-  private User user;
   String calibrationStage;
   int score;
 
@@ -92,26 +86,6 @@ public class GameSessionPostDto {
 
   public void setSpeed(float speed) {
     this.speed = speed;
-  }
-
-  public User getUser() {
-    return user;
-  }
-
-  public void setUser(User user) {
-    this.user = user;
-  }
-
-  @Temporal(TemporalType.TIMESTAMP)
-  private Date creationDateTime;
-
-
-  public Date getCreationDateTime() {
-    return creationDateTime;
-  }
-
-  public void setCreationDateTime(Date creationDateTime) {
-    this.creationDateTime = creationDateTime;
   }
 
   public String getUserID() {
