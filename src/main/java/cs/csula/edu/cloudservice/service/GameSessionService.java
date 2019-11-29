@@ -19,8 +19,6 @@ public class GameSessionService
     private final UserRepository userRepository;
     private final GameSessionRepository gameSessionRepository;
     private final ModelMapper modelMapper;
-    private UUID userID;
-    private UUID gameID;
 
     public GameSessionService(GameSessionRepository gameSessionRepository,UserRepository userRepository, ModelMapper modelMapper) {
         this.gameSessionRepository = gameSessionRepository;
@@ -30,7 +28,7 @@ public class GameSessionService
 
     public GameSession updateGameSession(String id, Map<String, Object> update)
     {
-        gameID = UUID.fromString(id);
+        UUID gameID = UUID.fromString(id);
         GameSession gameSession = gameSessionRepository.findById(gameID).get();
         for (String key : update.keySet()) {
             switch (key)
@@ -70,7 +68,7 @@ public class GameSessionService
     public GameSession createGameSession(GameSessionPostDto gameSessionPostDto)
     {
         //saves user ID
-        userID = UUID.fromString(gameSessionPostDto.getUserID());
+        UUID userID = UUID.fromString(gameSessionPostDto.getUserID());
         gameSessionPostDto.setUser(userRepository.findById(userID).get());
         GameSession gameSession = modelMapper.map(gameSessionPostDto, GameSession.class);
         return gameSessionRepository.save(gameSession);
