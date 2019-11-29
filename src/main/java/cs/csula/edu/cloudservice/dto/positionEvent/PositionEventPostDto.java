@@ -6,9 +6,9 @@ public class PositionEventPostDto {
   private int y;
   private int z;
 
-  private String deviceID;
+  private String deviceId;
 
-  private String gameID;
+  private String gameId;
 
   public int getX() {
     return x;
@@ -34,19 +34,19 @@ public class PositionEventPostDto {
     this.z = z;
   }
 
-  public String getDeviceID() {
-    return deviceID;
+  public String getDeviceId() {
+    return deviceId;
   }
 
-  public void setDeviceID(String deviceID) {
-    this.deviceID = deviceID;
+  public void setDeviceId(String deviceId) {
+    this.deviceId = deviceId;
   }
 
-  public String getGameID() {
-    return gameID;
+  public String getGameId() {
+    return gameId;
   }
 
-  public void setGameID(String gameID) {
-    this.gameID = gameID;
+  public void setGameId(String gameId) {
+    this.gameId = gameId;
   }
 }
