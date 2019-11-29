@@ -30,7 +30,9 @@ public class GameSessionController {
 
   @PostMapping
   public GameSession createGameSession(@RequestBody GameSessionPostDto gameSessionPostDto) {
-    return gameSessionService.createGameSession(gameSessionPostDto);
+    GameSession gameSession = gameSessionService.createGameSession(gameSessionPostDto);
+
+    return gameSession;
   }
 
 }
