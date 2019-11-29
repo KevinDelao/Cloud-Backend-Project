@@ -9,5 +9,5 @@ public class PathConstants {
   public static final String Device = "/device";
   public static final String PositionEvent = "/positionEvent";
   public static final String GameSession = "/gameSession";
-  
+
 }

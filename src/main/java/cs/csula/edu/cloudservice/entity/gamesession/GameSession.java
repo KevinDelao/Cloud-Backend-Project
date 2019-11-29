@@ -42,6 +42,7 @@ public class GameSession {
 
   int baseline;
   float speed;
+
   public String getCalibrationStage() {
     return calibrationStage;
   }

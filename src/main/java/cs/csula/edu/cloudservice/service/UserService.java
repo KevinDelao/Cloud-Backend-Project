@@ -3,10 +3,9 @@ package cs.csula.edu.cloudservice.service;
 import cs.csula.edu.cloudservice.dto.user.UserPostDto;
 import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.repository.UserRepository;
+import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.UUID;
 
 @Service
 public class UserService {
@@ -25,8 +24,8 @@ public class UserService {
     User user = modelMapper.map(userPostDto, User.class);
     return userRepository.save(user);
   }
-  public User getUser(UUID id)
-  {
+
+  public User getUser(UUID id) {
     User user = userRepository.findById(id).get();
     return user;
   }

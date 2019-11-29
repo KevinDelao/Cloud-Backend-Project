@@ -1,126 +1,126 @@
 package cs.csula.edu.cloudservice.dto.gameSession;
 
 import cs.csula.edu.cloudservice.entity.user.User;
-
-import javax.persistence.*;
 import java.util.Date;
-import java.util.UUID;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
-public class GameSessionPostDto
-{
-    private String userID;
-    private User user;
-    String calibrationStage;
-    int score;
+public class GameSessionPostDto {
 
-    int rounds;
-    int wordsCorrect;
-    int totalWords;
+  private String userID;
+  private User user;
+  String calibrationStage;
+  int score;
 
-    int totalWrongWords;
-    int objectsHit;
+  int rounds;
+  int wordsCorrect;
+  int totalWords;
 
-    int baseline;
-    float speed;
+  int totalWrongWords;
+  int objectsHit;
 
-    public String getCalibrationStage() {
-        return calibrationStage;
-    }
+  int baseline;
+  float speed;
 
-    public void setCalibrationStage(String calibrationStage) {
-        this.calibrationStage = calibrationStage;
-    }
+  public String getCalibrationStage() {
+    return calibrationStage;
+  }
 
-    public int getScore() {
-        return score;
-    }
+  public void setCalibrationStage(String calibrationStage) {
+    this.calibrationStage = calibrationStage;
+  }
 
-    public void setScore(int score) {
-        this.score = score;
-    }
+  public int getScore() {
+    return score;
+  }
 
-    public int getRounds() {
-        return rounds;
-    }
+  public void setScore(int score) {
+    this.score = score;
+  }
 
-    public void setRounds(int rounds) {
-        this.rounds = rounds;
-    }
+  public int getRounds() {
+    return rounds;
+  }
 
-    public int getWordsCorrect() {
-        return wordsCorrect;
-    }
+  public void setRounds(int rounds) {
+    this.rounds = rounds;
+  }
 
-    public void setWordsCorrect(int wordsCorrect) {
-        this.wordsCorrect = wordsCorrect;
-    }
+  public int getWordsCorrect() {
+    return wordsCorrect;
+  }
 
-    public int getTotalWords() {
-        return totalWords;
-    }
+  public void setWordsCorrect(int wordsCorrect) {
+    this.wordsCorrect = wordsCorrect;
+  }
 
-    public void setTotalWords(int totalWords) {
-        this.totalWords = totalWords;
-    }
+  public int getTotalWords() {
+    return totalWords;
+  }
 
-    public int getTotalWrongWords() {
-        return totalWrongWords;
-    }
+  public void setTotalWords(int totalWords) {
+    this.totalWords = totalWords;
+  }
 
-    public void setTotalWrongWords(int totalWrongWords) {
-        this.totalWrongWords = totalWrongWords;
-    }
+  public int getTotalWrongWords() {
+    return totalWrongWords;
+  }
 
-    public int getObjectsHit() {
-        return objectsHit;
-    }
+  public void setTotalWrongWords(int totalWrongWords) {
+    this.totalWrongWords = totalWrongWords;
+  }
 
-    public void setObjectsHit(int objectsHit) {
-        this.objectsHit = objectsHit;
-    }
+  public int getObjectsHit() {
+    return objectsHit;
+  }
 
-    public int getBaseline() {
-        return baseline;
-    }
+  public void setObjectsHit(int objectsHit) {
+    this.objectsHit = objectsHit;
+  }
 
-    public void setBaseline(int baseline) {
-        this.baseline = baseline;
-    }
+  public int getBaseline() {
+    return baseline;
+  }
 
-    public float getSpeed() {
-        return speed;
-    }
+  public void setBaseline(int baseline) {
+    this.baseline = baseline;
+  }
 
-    public void setSpeed(float speed) {
-        this.speed = speed;
-    }
+  public float getSpeed() {
+    return speed;
+  }
 
-    public User getUser() {
-        return user;
-    }
+  public void setSpeed(float speed) {
+    this.speed = speed;
+  }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
+  public User getUser() {
+    return user;
+  }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date creationDateTime;
+  public void setUser(User user) {
+    this.user = user;
+  }
+
+  @Temporal(TemporalType.TIMESTAMP)
+  private Date creationDateTime;
 
 
-    public Date getCreationDateTime() {
-        return creationDateTime;
-    }
+  public Date getCreationDateTime() {
+    return creationDateTime;
+  }
 
-    public void setCreationDateTime(Date creationDateTime) {
-        this.creationDateTime = creationDateTime;
-    }
-    public String getUserID() {
-        return userID;
-    }
+  public void setCreationDateTime(Date creationDateTime) {
+    this.creationDateTime = creationDateTime;
+  }
 
-    public void setUserID(String userID) {
-        this.userID = userID;
-    }
+  public String getUserID() {
+    return userID;
+  }
+
+  public void setUserID(String userID) {
+    this.userID = userID;
+  }
 
 
 }

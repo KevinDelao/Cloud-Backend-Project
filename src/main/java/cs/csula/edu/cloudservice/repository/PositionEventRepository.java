@@ -1,6 +1,5 @@
 package cs.csula.edu.cloudservice.repository;
 
-import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
