@@ -3,12 +3,9 @@ package cs.csula.edu.cloudservice.service;
 
 import cs.csula.edu.cloudservice.dto.device.DevicePostDto;
 import cs.csula.edu.cloudservice.entity.device.Device;
-import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.ConflictException;
-import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.DeviceRepository;
-import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +34,8 @@ public class DeviceService {
   }
 
   public Device getDeviceByName(String name) {
-    return deviceRepository.getDeviceByName(name).orElseThrow(() -> new NotFoundException(String.format(DEVICE_NOT_FOUND, name)));
+    return deviceRepository.getDeviceByName(name)
+        .orElseThrow(() -> new NotFoundException(String.format(DEVICE_NOT_FOUND, name)));
   }
 
   private void validateDevice(String name) {
