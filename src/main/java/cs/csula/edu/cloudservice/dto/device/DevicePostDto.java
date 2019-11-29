@@ -1,9 +1,13 @@
 package cs.csula.edu.cloudservice.dto.device;
 
+import javax.validation.constraints.NotEmpty;
+
 public class DevicePostDto {
 
+  @NotEmpty
   private String name;
 
+  @NotEmpty
   private String userId;
 
   public String getName() {

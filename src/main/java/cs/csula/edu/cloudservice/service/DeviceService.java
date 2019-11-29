@@ -4,7 +4,9 @@ package cs.csula.edu.cloudservice.service;
 import cs.csula.edu.cloudservice.dto.device.DevicePostDto;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.user.User;
+import cs.csula.edu.cloudservice.exception.ConflictException;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
+import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.DeviceRepository;
 import java.util.UUID;
 import org.modelmapper.ModelMapper;
@@ -13,22 +15,31 @@ import org.springframework.stereotype.Service;
 @Service
 public class DeviceService {
 
-  private static final String USER_NOT_FOUND = "User with id %s does not exist.";
+  private static final String DEVICE_USER_NOT_FOUND = "Device cannot be linked to non existent user id %s";
+  private static final String DEVICE_ALREADY_EXISTS = "Device with name %s already exists";
 
   private final DeviceRepository deviceRepository;
   private final UserService userService;
   private final ModelMapper modelMapper;
 
-  public DeviceService(DeviceRepository deviceRepository, UserService userService, ModelMapper modelMapper) {
+  public DeviceService(DeviceRepository deviceRepository, UserService userService,
+      ModelMapper modelMapper) {
     this.deviceRepository = deviceRepository;
     this.userService = userService;
     this.modelMapper = modelMapper;
   }
 
   public Device createDevice(DevicePostDto devicePostDto) {
+    validateDevice(devicePostDto.getName());
     Device device = modelMapper.map(devicePostDto, Device.class);
     device.setUser(getUser(devicePostDto.getUserId()));
     return deviceRepository.save(device);
+  }
+
+  private void validateDevice(String name) {
+    if (deviceRepository.countDevicesByName(name) > 0) {
+      throw new ConflictException(String.format(DEVICE_ALREADY_EXISTS, name));
+    }
   }
 
   private User getUser(String userId) {
@@ -36,15 +47,13 @@ public class DeviceService {
     try {
       userUuid = UUID.fromString(userId);
     } catch (IllegalArgumentException ex) {
-      throw new EntityNotProcessableException(String.format(USER_NOT_FOUND, userId));
+      throw new EntityNotProcessableException(String.format(DEVICE_USER_NOT_FOUND, userId));
     }
 
-    User user = userService.getUser(userUuid);
-
-    if (user == null) {
-      throw new EntityNotProcessableException(String.format(USER_NOT_FOUND, userId));
+    try {
+      return userService.getUser(userUuid);
+    } catch (NotFoundException ex) {
+      throw new EntityNotProcessableException(String.format(DEVICE_USER_NOT_FOUND, userId));
     }
-
-    return user;
   }
 }

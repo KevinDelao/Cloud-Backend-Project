@@ -13,11 +13,13 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
+  private static final String USER_WITH_ID_NOT_FOUND = "User with id %s does not exist.";
+
+  private static final String USER_NOT_EXISTS = "User with username %s does not exist";
+
   private final UserRepository userRepository;
 
   private final ModelMapper modelMapper;
-
-  private static final String USER_NOT_EXISTS = "User with username %s does not exist";
 
   public UserService(UserRepository userRepository, ModelMapper modelMapper) {
     this.userRepository = userRepository;
@@ -30,8 +32,9 @@ public class UserService {
   }
 
   public User getUser(UUID id) {
-    User user = userRepository.findById(id).get();
-    return user;
+    Optional<User> userOpt = userRepository.findById(id);
+
+    return userOpt.orElseThrow(() -> new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, id)));
   }
 
   public User getUser(String username) {
