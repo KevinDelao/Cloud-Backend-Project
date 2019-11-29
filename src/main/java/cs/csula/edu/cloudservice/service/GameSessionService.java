@@ -73,7 +73,7 @@ public class GameSessionService {
 
   public GameSession createGameSession(GameSessionPostDto gameSessionPostDto) {
     GameSession gameSession = modelMapper.map(gameSessionPostDto, GameSession.class);
-    gameSession.setUser(getUser(gameSessionPostDto.getUserID()));
+    gameSession.setUser(getUser(gameSessionPostDto.getUserId()));
     return gameSessionRepository.save(gameSession);
   }
 

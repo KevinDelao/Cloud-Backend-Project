@@ -5,7 +5,7 @@ import javax.validation.constraints.NotEmpty;
 public class GameSessionPostDto {
 
   @NotEmpty
-  private String userID;
+  private String userId;
   String calibrationStage;
   int score;
 
@@ -91,12 +91,12 @@ public class GameSessionPostDto {
     this.speed = speed;
   }
 
-  public String getUserID() {
-    return userID;
+  public String getUserId() {
+    return userId;
   }
 
-  public void setUserID(String userID) {
-    this.userID = userID;
+  public void setUserId(String userId) {
+    this.userId = userId;
   }
 
 
