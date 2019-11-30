@@ -5,6 +5,7 @@ import cs.csula.edu.cloudservice.dto.positionEvent.PositionEventPostDto;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.service.PositionEventService;
+import java.util.List;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,6 +33,17 @@ public class PositionEventController {
       @Valid @RequestBody PositionEventPostDto positionEventPostDto) {
     try {
       positionEventService.createPositionEvent(positionEventPostDto);
+    } catch (EntityNotProcessableException ex) {
+      throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage(), ex);
+    }
+  }
+
+  @PostMapping("/batch")
+  @ResponseStatus(HttpStatus.CREATED)
+  public void createPositionEvents(
+      @Valid @RequestBody List<PositionEventPostDto> positionEventPostDtos) {
+    try {
+      positionEventService.createPositionEvents(positionEventPostDtos);
     } catch (EntityNotProcessableException ex) {
       throw new ResponseStatusException(HttpStatus.UNPROCESSABLE_ENTITY, ex.getMessage(), ex);
     }

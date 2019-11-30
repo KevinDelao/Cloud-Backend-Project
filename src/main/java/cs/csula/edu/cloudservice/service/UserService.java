@@ -14,7 +14,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
 
   private static final String USER_WITH_ID_NOT_FOUND = "User with id %s does not exist.";
-  private static final String USER_NOT_EXISTS = "User with username %s does not exist.";
+  private static final String USER_WITH_USERNAME_NOT_EXISTS = "User with username %s does not exist.";
   private static final String USER_WITH_USERNAME_EXISTS = "User with username already exists.";
 
   private final UserRepository userRepository;
@@ -49,6 +49,6 @@ public class UserService {
     Optional<User> userOpt = userRepository.getUserByUsernameEquals(username);
 
     return userOpt
-        .orElseThrow(() -> new NotFoundException(String.format(USER_NOT_EXISTS, username)));
+        .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_USERNAME_NOT_EXISTS, username)));
   }
 }

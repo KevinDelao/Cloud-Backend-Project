@@ -8,6 +8,8 @@ import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.repository.DeviceRepository;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
 import cs.csula.edu.cloudservice.repository.PositionEventRepository;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -15,8 +17,8 @@ import org.springframework.stereotype.Service;
 @Service
 public class PositionEventService {
 
-  private static final String DEVICE_NOT_FOUND = "Game session could not be linked to non-existent device with id %s.";
-  private static final String GAME_SESSION_NOT_FOUND = "Game session could not be linked to non-existent game session with id %s.";
+  private static final String DEVICE_NOT_FOUND = "Position event could not be linked to non-existent device with id %s.";
+  private static final String GAME_SESSION_NOT_FOUND = "Position event could not be linked to non-existent game session with id %s.";
 
   private final PositionEventRepository positionEventRepository;
   private final DeviceRepository deviceRepository;
@@ -33,11 +35,30 @@ public class PositionEventService {
   }
 
 
-  public PositionEvent createPositionEvent(PositionEventPostDto positionEventPostDto) {
+  public void createPositionEvent(PositionEventPostDto positionEventPostDto) {
     PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
     positionEvent.setDevice(getDevice(positionEventPostDto.getDeviceId()));
     positionEvent.setGameSession(getGameSession(positionEventPostDto.getGameId()));
-    return positionEventRepository.save(positionEvent);
+
+    positionEventRepository.save(positionEvent);
+  }
+
+  public void createPositionEvents(List<PositionEventPostDto> positionEventPostDtos) {
+    if (!positionEventPostDtos.isEmpty()) {
+      final PositionEventPostDto positionEventPostDto = positionEventPostDtos.get(0);
+      final Device device = getDevice(positionEventPostDto.getDeviceId());
+      final GameSession gameSession = getGameSession(positionEventPostDto.getGameId());
+
+      List<PositionEvent> positionEvents = new ArrayList<>();
+      modelMapper.map(positionEventPostDtos, positionEvents);
+
+      for (PositionEvent positionEvent : positionEvents) {
+        positionEvent.setDevice(device);
+        positionEvent.setGameSession(gameSession);
+      }
+
+      positionEventRepository.saveAll(positionEvents);
+    }
   }
 
   private Device getDevice(String deviceId) {
