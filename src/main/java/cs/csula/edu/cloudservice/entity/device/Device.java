@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.entity.device;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.user.User;
 import java.util.List;
@@ -22,10 +23,12 @@ public class Device {
   private String name;
 
   @OneToMany(mappedBy = "device")
+  @JsonIgnore
   private List<PositionEvent> positionEvents;
 
   @ManyToOne
   @JoinColumn
+  @JsonIgnore
   private User user;
 
   public UUID getId() {

@@ -1,5 +1,6 @@
 package cs.csula.edu.cloudservice.entity.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import java.util.List;
@@ -31,6 +32,7 @@ public class User {
   private List<Device> devices;
 
   @OneToMany(mappedBy = "user")
+  @JsonIgnore
   private List<GameSession> gameSessions;
 
   public UUID getId() {

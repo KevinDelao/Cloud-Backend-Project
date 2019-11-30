@@ -1,79 +1,56 @@
 package cs.csula.edu.cloudservice.dto.positionEvent;
 
-import cs.csula.edu.cloudservice.entity.device.Device;
-import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
+import javax.validation.constraints.NotEmpty;
 
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+public class PositionEventPostDto {
 
-public class PositionEventPostDto
-{
-    public int getY() {
-        return y;
-    }
+  private int x;
+  private int y;
+  private int z;
 
-    public void setY(int y) {
-        this.y = y;
-    }
+  @NotEmpty
+  private String deviceId;
 
-    public int getZ() {
-        return z;
-    }
+  @NotEmpty
+  private String gameSessionId;
 
-    public void setZ(int z) {
-        this.z = z;
-    }
+  public int getX() {
+    return x;
+  }
 
-    public int getX() {
-        return x;
-    }
+  public void setX(int x) {
+    this.x = x;
+  }
 
-    public void setX(int x) {
-        this.x = x;
-    }
+  public int getY() {
+    return y;
+  }
 
-    private int x;
-    private int y;
-    private int z;
+  public void setY(int y) {
+    this.y = y;
+  }
 
-    private String deviceID;
+  public int getZ() {
+    return z;
+  }
 
-    public String getDeviceID() {
-        return deviceID;
-    }
+  public void setZ(int z) {
+    this.z = z;
+  }
 
-    public void setDeviceID(String deviceID) {
-        this.deviceID = deviceID;
-    }
+  public String getDeviceId() {
+    return deviceId;
+  }
 
-    public String getGameID() {
-        return gameID;
-    }
+  public void setDeviceId(String deviceId) {
+    this.deviceId = deviceId;
+  }
 
-    public void setGameID(String gameID) {
-        this.gameID = gameID;
-    }
+  public String getGameSessionId() {
+    return gameSessionId;
+  }
 
-    private Device device;
-
-    private String gameID;
-    private GameSession gameSession;
-
-    public Device getDevice() {
-        return device;
-    }
-
-    public void setDevice(Device device) {
-        this.device = device;
-    }
-
-    public GameSession getGameSession() {
-        return gameSession;
-    }
-
-    public void setGameSession(GameSession gameSession) {
-        this.gameSession = gameSession;
-    }
-
-
+  public void setGameSessionId(String gameSessionId) {
+    this.gameSessionId = gameSessionId;
+  }
 }

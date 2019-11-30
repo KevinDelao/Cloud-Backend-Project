@@ -1,11 +1,16 @@
 package cs.csula.edu.cloudservice.dto.user;
 
+import javax.validation.constraints.NotEmpty;
+
 public class UserPostDto {
 
+  @NotEmpty
   private String username;
 
+  @NotEmpty
   private String firstName;
 
+  @NotEmpty
   private String lastName;
 
   public String getUsername() {
