@@ -12,7 +12,7 @@ public class PositionEventPostDto {
   private String deviceId;
 
   @NotEmpty
-  private String gameId;
+  private String gameSessionId;
 
   public int getX() {
     return x;
@@ -46,11 +46,11 @@ public class PositionEventPostDto {
     this.deviceId = deviceId;
   }
 
-  public String getGameId() {
-    return gameId;
+  public String getGameSessionId() {
+    return gameSessionId;
   }
 
-  public void setGameId(String gameId) {
-    this.gameId = gameId;
+  public void setGameSessionId(String gameSessionId) {
+    this.gameSessionId = gameSessionId;
   }
 }

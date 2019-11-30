@@ -38,7 +38,7 @@ public class PositionEventService {
   public void createPositionEvent(PositionEventPostDto positionEventPostDto) {
     PositionEvent positionEvent = modelMapper.map(positionEventPostDto, PositionEvent.class);
     positionEvent.setDevice(getDevice(positionEventPostDto.getDeviceId()));
-    positionEvent.setGameSession(getGameSession(positionEventPostDto.getGameId()));
+    positionEvent.setGameSession(getGameSession(positionEventPostDto.getGameSessionId()));
 
     positionEventRepository.save(positionEvent);
   }
@@ -47,7 +47,7 @@ public class PositionEventService {
     if (!positionEventPostDtos.isEmpty()) {
       final PositionEventPostDto positionEventPostDto = positionEventPostDtos.get(0);
       final Device device = getDevice(positionEventPostDto.getDeviceId());
-      final GameSession gameSession = getGameSession(positionEventPostDto.getGameId());
+      final GameSession gameSession = getGameSession(positionEventPostDto.getGameSessionId());
 
       List<PositionEvent> positionEvents = new ArrayList<>();
       modelMapper.map(positionEventPostDtos, positionEvents);
@@ -69,13 +69,9 @@ public class PositionEventService {
       throw new EntityNotProcessableException(String.format(DEVICE_NOT_FOUND, deviceId));
     }
 
-    Device device = deviceRepository.getOne(deviceUuid);
+    return deviceRepository.findById(deviceUuid).orElseThrow(
+        () -> new EntityNotProcessableException(String.format(DEVICE_NOT_FOUND, deviceId)));
 
-    if (device == null) {
-      throw new EntityNotProcessableException(String.format(DEVICE_NOT_FOUND, deviceId));
-    }
-
-    return device;
   }
 
   private GameSession getGameSession(String gameSessionId) {
@@ -86,12 +82,8 @@ public class PositionEventService {
       throw new EntityNotProcessableException(String.format(GAME_SESSION_NOT_FOUND, gameSessionId));
     }
 
-    GameSession gameSession = gameSessionRepository.getOne(gameSessionUuid);
-
-    if (gameSession == null) {
-      throw new EntityNotProcessableException(String.format(GAME_SESSION_NOT_FOUND, gameSessionId));
-    }
-
-    return gameSession;
+    return gameSessionRepository.findById(gameSessionUuid).orElseThrow(
+        () -> new EntityNotProcessableException(
+            String.format(GAME_SESSION_NOT_FOUND, gameSessionId)));
   }
 }
