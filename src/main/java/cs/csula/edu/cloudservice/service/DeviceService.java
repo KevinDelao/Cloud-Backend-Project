@@ -9,6 +9,9 @@ import cs.csula.edu.cloudservice.repository.DeviceRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class DeviceService {
 
@@ -18,12 +21,13 @@ public class DeviceService {
   private final DeviceRepository deviceRepository;
   private final UserService userService;
   private final ModelMapper modelMapper;
-
+  private List<DevicePostDto> deviceList;
   public DeviceService(DeviceRepository deviceRepository, UserService userService,
       ModelMapper modelMapper) {
     this.deviceRepository = deviceRepository;
     this.userService = userService;
     this.modelMapper = modelMapper;
+    deviceList = new ArrayList<DevicePostDto>();
   }
 
   public Device createDevice(DevicePostDto devicePostDto) {
@@ -41,5 +45,14 @@ public class DeviceService {
     if (deviceRepository.countDevicesByName(name) > 0) {
       throw new ConflictException(String.format(DEVICE_ALREADY_EXISTS, name));
     }
+  }
+
+  public List<DevicePostDto> getAll()
+  {
+    for (int i = 0; i < deviceRepository.findAll().size(); i++) {
+      DevicePostDto userPost = modelMapper.map(deviceRepository.findAll().get(i), DevicePostDto.class);
+      deviceList.add(userPost);
+    }
+    return deviceList;
   }
 }

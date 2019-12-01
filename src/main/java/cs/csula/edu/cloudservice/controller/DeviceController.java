@@ -17,6 +17,8 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(PathConstants.VERSION + PathConstants.DEVICE)
 public class DeviceController {
@@ -46,5 +48,10 @@ public class DeviceController {
     } catch (NotFoundException ex) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
     }
+  }
+  @GetMapping("/all")
+  public List<DevicePostDto> getAllUsers()
+  {
+    return deviceService.getAll();
   }
 }
