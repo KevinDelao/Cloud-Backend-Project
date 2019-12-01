@@ -58,6 +58,7 @@ public class UserService {
   }
 
   public List<UserPostDto> getAll() {
+    userList.clear();
     for (int i = 0; i < userRepository.findAll().size(); i++) {
       UserPostDto userPost = modelMapper.map(userRepository.findAll().get(i), UserPostDto.class);
       userList.add(userPost);

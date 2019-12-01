@@ -49,6 +49,8 @@ public class DeviceService {
 
   public List<DevicePostDto> getAll()
   {
+    //remove any previous elements
+    deviceList.clear();
     for (int i = 0; i < deviceRepository.findAll().size(); i++) {
       DevicePostDto userPost = modelMapper.map(deviceRepository.findAll().get(i), DevicePostDto.class);
       deviceList.add(userPost);
