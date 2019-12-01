@@ -4,6 +4,8 @@ import cs.csula.edu.cloudservice.dto.user.UserPostDto;
 import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.service.UserService;
+
+import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -45,5 +47,10 @@ public class UserController {
     } catch (NotFoundException ex) {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
     }
+  }
+  @GetMapping("/all")
+  public List<UserPostDto> getAllUsers()
+  {
+    return userService.getAll();
   }
 }

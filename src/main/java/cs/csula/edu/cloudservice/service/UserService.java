@@ -5,6 +5,9 @@ import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.ConflictException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.UserRepository;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 import org.modelmapper.ModelMapper;
@@ -20,10 +23,12 @@ public class UserService {
   private final UserRepository userRepository;
 
   private final ModelMapper modelMapper;
+  private List<UserPostDto> userList;
 
   public UserService(UserRepository userRepository, ModelMapper modelMapper) {
     this.userRepository = userRepository;
     this.modelMapper = modelMapper;
+    userList = new ArrayList<UserPostDto>();
   }
 
   public User createUser(UserPostDto userPostDto) {
@@ -42,13 +47,22 @@ public class UserService {
     Optional<User> userOpt = userRepository.findById(id);
 
     return userOpt
-        .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, id)));
+            .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, id)));
   }
 
   public User getUserByUsername(String username) {
     Optional<User> userOpt = userRepository.getUserByUsernameEquals(username);
 
     return userOpt
-        .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_USERNAME_NOT_EXISTS, username)));
+            .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_USERNAME_NOT_EXISTS, username)));
+  }
+
+  public List<UserPostDto> getAll() {
+    for (int i = 0; i < userRepository.findAll().size(); i++) {
+      UserPostDto userPost = modelMapper.map(userRepository.findAll().get(i), UserPostDto.class);
+      userList.add(userPost);
+    }
+    return userList;
+
   }
 }
