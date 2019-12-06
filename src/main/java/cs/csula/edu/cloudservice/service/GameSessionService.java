@@ -8,6 +8,7 @@ import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -26,6 +27,7 @@ public class GameSessionService {
 
   public GameSessionService(GameSessionRepository gameSessionRepository,
       UserService userService, ModelMapper modelMapper) {
+
     this.gameSessionRepository = gameSessionRepository;
     this.userService = userService;
     this.modelMapper = modelMapper;
@@ -69,14 +71,16 @@ public class GameSessionService {
     } catch (IllegalArgumentException ex) {
       throw new NotFoundException(String.format(GAME_SESSION_NOT_FOUND, gameId));
     }
-
     return gameSessionRepository.findById(gameUuid)
         .orElseThrow(() -> new NotFoundException(String.format(GAME_SESSION_NOT_FOUND, gameId)));
   }
 
-  public GameSession createGameSession(GameSessionPostDto gameSessionPostDto) {
+  public GameSession createGameSession(GameSessionPostDto gameSessionPostDto)
+  {
     GameSession gameSession = modelMapper.map(gameSessionPostDto, GameSession.class);
     gameSession.setUser(getUser(gameSessionPostDto.getUserId()));
+    Date date = new Date();
+    gameSession.setCreationDateTime(date);
     return gameSessionRepository.save(gameSession);
   }
 
