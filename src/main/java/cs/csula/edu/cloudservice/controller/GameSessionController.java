@@ -6,12 +6,19 @@ import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.service.GameSessionService;
-
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 import javax.validation.Valid;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.server.ResponseStatusException;
 
 @RestController
@@ -44,9 +51,12 @@ public class GameSessionController {
     }
   }
 
-  @GetMapping("/{id}")
-  public List<PositionEvent> getGamePositionEvents(@PathVariable String id)
-  {
+  @GetMapping("/{id}/position-event")
+  public List<PositionEvent> getGamePositionEvents(@PathVariable UUID id) {
+    try {
       return gameSessionService.getGameEvents(id);
+    } catch (NotFoundException ex) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+    }
   }
 }
