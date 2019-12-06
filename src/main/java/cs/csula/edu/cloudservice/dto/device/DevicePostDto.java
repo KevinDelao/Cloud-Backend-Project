@@ -1,7 +1,6 @@
 package cs.csula.edu.cloudservice.dto.device;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.UUID;
 
 public class DevicePostDto {
 

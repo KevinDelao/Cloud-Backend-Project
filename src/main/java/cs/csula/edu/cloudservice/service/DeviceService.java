@@ -8,12 +8,11 @@ import cs.csula.edu.cloudservice.exception.ConflictException;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.DeviceRepository;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Service;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Service;
 
 @Service
 public class DeviceService {
@@ -23,11 +22,11 @@ public class DeviceService {
   private static final String DEVICE_USER_NOT_FOUND = "Device cannot be linked to non-existent user with id %s.";
 
 
-
   private final DeviceRepository deviceRepository;
   private final UserService userService;
   private final ModelMapper modelMapper;
   private List<DevicePostDto> deviceList;
+
   public DeviceService(DeviceRepository deviceRepository, UserService userService,
       ModelMapper modelMapper) {
     this.deviceRepository = deviceRepository;
@@ -42,6 +41,7 @@ public class DeviceService {
     device.setUser(getUser(devicePostDto.getUserId()));
     return deviceRepository.save(device);
   }
+
   private User getUser(String userId) {
     UUID userUuid;
     try {
@@ -68,8 +68,7 @@ public class DeviceService {
     }
   }
 
-  public List<Device> getAll()
-  {
+  public List<Device> getAll() {
 //    //remove any previous elements
 //    deviceList.clear();
 //    for (int i = 0; i < deviceRepository.findAll().size(); i++) {
