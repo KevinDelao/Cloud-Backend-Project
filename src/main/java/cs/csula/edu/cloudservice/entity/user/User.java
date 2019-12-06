@@ -80,7 +80,8 @@ public class User {
   }
 
   public void setGameSessions(
-      List<GameSession> gameSessions) {
+      List<GameSession> gameSessions)
+  {
     this.gameSessions = gameSessions;
   }
 }

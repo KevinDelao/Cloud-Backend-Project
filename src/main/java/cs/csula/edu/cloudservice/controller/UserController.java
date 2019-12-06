@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.controller;
 
 import cs.csula.edu.cloudservice.dto.user.UserPostDto;
+import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.service.UserService;
@@ -49,8 +50,15 @@ public class UserController {
     }
   }
   @GetMapping("/all")
-  public List<UserPostDto> getAllUsers()
+  public List<User> getAllUsers()
   {
     return userService.getAll();
   }
+
+//  @GetMapping("/{username}")
+//  public PositionEvent getUserPositionEvents(@PathVariable String username)
+//  {
+//    return userService.getEvents(username);
+//  }
 }
+

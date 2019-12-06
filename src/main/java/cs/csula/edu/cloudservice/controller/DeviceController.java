@@ -50,7 +50,7 @@ public class DeviceController {
     }
   }
   @GetMapping("/all")
-  public List<DevicePostDto> getAllUsers()
+  public List<Device> getAllDevices()
   {
     return deviceService.getAll();
   }

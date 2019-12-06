@@ -1,8 +1,11 @@
 package cs.csula.edu.cloudservice.dto.user;
 
 import javax.validation.constraints.NotEmpty;
+import java.util.UUID;
 
 public class UserPostDto {
+//  @NotEmpty
+//  private UUID id;
 
   @NotEmpty
   private String username;
@@ -36,4 +39,11 @@ public class UserPostDto {
   public void setLastName(String lastName) {
     this.lastName = lastName;
   }
+//  public UUID getId() {
+//    return id;
+//  }
+//
+//  public void setId(UUID id) {
+//    this.id = id;
+//  }
 }

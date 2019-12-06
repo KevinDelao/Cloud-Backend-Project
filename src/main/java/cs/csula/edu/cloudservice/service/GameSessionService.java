@@ -1,11 +1,14 @@
 package cs.csula.edu.cloudservice.service;
 
 import cs.csula.edu.cloudservice.dto.gameSession.GameSessionPostDto;
+import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
+
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 import org.modelmapper.ModelMapper;
@@ -90,5 +93,12 @@ public class GameSessionService {
     } catch (NotFoundException ex) {
       throw new EntityNotProcessableException(String.format(GAME_SESSION_USER_NOT_FOUND, userId));
     }
+  }
+
+  public List<PositionEvent> getGameEvents(String id)
+  {
+    UUID gameID = UUID.fromString(id);
+    GameSession game = gameSessionRepository.findById(gameID).get();
+    return game.getPositionEvents();
   }
 }
