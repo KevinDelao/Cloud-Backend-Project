@@ -7,9 +7,9 @@ import cs.csula.edu.cloudservice.entity.user.User;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
-
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
@@ -95,10 +95,13 @@ public class GameSessionService {
     }
   }
 
-  public List<PositionEvent> getGameEvents(String id)
-  {
-    UUID gameID = UUID.fromString(id);
-    GameSession game = gameSessionRepository.findById(gameID).get();
-    return game.getPositionEvents();
+  public List<PositionEvent> getGameEvents(UUID gameId) {
+    Optional<GameSession> gameSessionOpt = gameSessionRepository.findById(gameId);
+
+    if (!gameSessionOpt.isPresent()) {
+      throw new NotFoundException(String.format(GAME_SESSION_NOT_FOUND, gameId));
+    }
+
+    return gameSessionOpt.get().getPositionEvents();
   }
 }

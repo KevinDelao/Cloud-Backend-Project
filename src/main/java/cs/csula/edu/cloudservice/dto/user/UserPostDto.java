@@ -1,7 +1,6 @@
 package cs.csula.edu.cloudservice.dto.user;
 
 import javax.validation.constraints.NotEmpty;
-import java.util.UUID;
 
 public class UserPostDto {
 //  @NotEmpty

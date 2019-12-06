@@ -1,11 +1,11 @@
 package cs.csula.edu.cloudservice.controller;
 
 import cs.csula.edu.cloudservice.dto.user.UserPostDto;
-import cs.csula.edu.cloudservice.entity.event.PositionEvent;
+import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import cs.csula.edu.cloudservice.entity.user.User;
+import cs.csula.edu.cloudservice.exception.ConflictException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.service.UserService;
-
 import java.util.List;
 import java.util.UUID;
 import javax.validation.Valid;
@@ -33,12 +33,25 @@ public class UserController {
   @PostMapping
   @ResponseStatus(HttpStatus.CREATED)
   public User createUser(@Valid @RequestBody UserPostDto userPostDto) {
-    return userService.createUser(userPostDto);
+    try {
+      return userService.createUser(userPostDto);
+    } catch (ConflictException ex) {
+      throw new ResponseStatusException(HttpStatus.CONFLICT, ex.getMessage(), ex);
+    }
   }
 
   @GetMapping("/{id}")
   public User getUserById(@PathVariable UUID id) {
     return userService.getUserByUsername(id);
+  }
+
+  @GetMapping("/{id}/game-session")
+  public List<GameSession> getGameSessionsUserById(@PathVariable UUID id) {
+    try {
+      return userService.getGameSessionByUserId(id);
+    } catch (NotFoundException ex) {
+      throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
+    }
   }
 
   @GetMapping
@@ -49,16 +62,10 @@ public class UserController {
       throw new ResponseStatusException(HttpStatus.NOT_FOUND, ex.getMessage(), ex);
     }
   }
+
   @GetMapping("/all")
-  public List<User> getAllUsers()
-  {
+  public List<User> getAllUsers() {
     return userService.getAll();
   }
-
-//  @GetMapping("/{username}")
-//  public PositionEvent getUserPositionEvents(@PathVariable String username)
-//  {
-//    return userService.getEvents(username);
-//  }
 }
 

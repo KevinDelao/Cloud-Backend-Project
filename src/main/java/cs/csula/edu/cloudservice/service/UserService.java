@@ -8,8 +8,6 @@ import cs.csula.edu.cloudservice.exception.ConflictException;
 import cs.csula.edu.cloudservice.exception.NotFoundException;
 import cs.csula.edu.cloudservice.repository.GameSessionRepository;
 import cs.csula.edu.cloudservice.repository.UserRepository;
-
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
@@ -21,21 +19,19 @@ public class UserService {
 
   private static final String USER_WITH_ID_NOT_FOUND = "User with id %s does not exist.";
   private static final String USER_WITH_USERNAME_NOT_EXISTS = "User with username %s does not exist.";
-  private static final String USER_WITH_USERNAME_EXISTS = "User with username already exists.";
+  private static final String USER_WITH_USERNAME_EXISTS = "User with username %s already exists.";
 
   private final UserRepository userRepository;
   private final GameSessionRepository gameSessionRepository;
 
   private final ModelMapper modelMapper;
   private List<PositionEvent> userEvents;
-//  private List<UserPostDto> userList;
 
-  public UserService(UserRepository userRepository, ModelMapper modelMapper, GameSessionRepository gameSessionRepository) {
+  public UserService(UserRepository userRepository, ModelMapper modelMapper,
+      GameSessionRepository gameSessionRepository) {
     this.userRepository = userRepository;
     this.gameSessionRepository = gameSessionRepository;
     this.modelMapper = modelMapper;
-    userEvents = new ArrayList<PositionEvent>();
-//    userList = new ArrayList<UserPostDto>();
   }
 
   public User createUser(UserPostDto userPostDto) {
@@ -54,32 +50,28 @@ public class UserService {
     Optional<User> userOpt = userRepository.findById(id);
 
     return userOpt
-            .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, id)));
+        .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, id)));
   }
 
   public User getUserByUsername(String username) {
     Optional<User> userOpt = userRepository.getUserByUsernameEquals(username);
 
     return userOpt
-            .orElseThrow(() -> new NotFoundException(String.format(USER_WITH_USERNAME_NOT_EXISTS, username)));
+        .orElseThrow(
+            () -> new NotFoundException(String.format(USER_WITH_USERNAME_NOT_EXISTS, username)));
   }
 
   public List<User> getAll() {
-//    userList.clear();
-//    for (int i = 0; i < userRepository.findAll().size(); i++) {
-//      UserPostDto userPost = modelMapper.map(userRepository.findAll().get(i), UserPostDto.class);
-//      userList.add(userPost);
-//    }
-//    return userList;
     return userRepository.findAll();
-
   }
 
-//  public List<PositionEvent> getEvents(String username) {
-//    User user = getUserByUsername(username);
-////    GameSession game = gameSessionRepository.findById(UUID.fromString(gameID)).get();
-//
-//    List<GameSession> games = user.getGameSessions();
-//    return games.
-//  }
+  public List<GameSession> getGameSessionByUserId(UUID userId) {
+    Optional<User> userOpt = userRepository.findById(userId);
+
+    if (!userOpt.isPresent()) {
+      throw new NotFoundException(String.format(USER_WITH_ID_NOT_FOUND, userId));
+    }
+
+    return gameSessionRepository.getAllByUser(userOpt.get());
+  }
 }

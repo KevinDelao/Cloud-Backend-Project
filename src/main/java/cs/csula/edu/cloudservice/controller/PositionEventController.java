@@ -2,7 +2,6 @@ package cs.csula.edu.cloudservice.controller;
 
 
 import cs.csula.edu.cloudservice.dto.positionEvent.PositionEventPostDto;
-import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.exception.EntityNotProcessableException;
 import cs.csula.edu.cloudservice.service.PositionEventService;
 import java.util.List;
