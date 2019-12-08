@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.entity.device;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.user.User;
 import java.util.List;
@@ -18,6 +19,8 @@ public class Device {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @JsonProperty("deviceId")
+
   private UUID id;
 
   private String name;

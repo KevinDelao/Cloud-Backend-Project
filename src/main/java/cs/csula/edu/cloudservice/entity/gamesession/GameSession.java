@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.entity.gamesession;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import cs.csula.edu.cloudservice.entity.event.PositionEvent;
 import cs.csula.edu.cloudservice.entity.user.User;
 import java.util.Date;
@@ -21,6 +22,8 @@ public class GameSession {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @JsonProperty("gameSessionId")
+
   private UUID id;
 
   @Temporal(TemporalType.TIMESTAMP)
