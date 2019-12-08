@@ -19,7 +19,7 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID id;
+  private UUID user_id;
 
   @Column(unique = true)
   private String username;
@@ -36,11 +36,11 @@ public class User {
   private List<GameSession> gameSessions;
 
   public UUID getId() {
-    return id;
+    return user_id;
   }
 
   public void setId(UUID id) {
-    this.id = id;
+    this.user_id = id;
   }
 
   public String getUsername() {
