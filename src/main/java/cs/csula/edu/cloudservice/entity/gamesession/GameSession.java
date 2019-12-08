@@ -21,7 +21,7 @@ public class GameSession {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID game_id;
+  private UUID id;
 
   @Temporal(TemporalType.TIMESTAMP)
   private Date creationDateTime;
@@ -121,11 +121,11 @@ public class GameSession {
 
 
   public UUID getId() {
-    return game_id;
+    return id;
   }
 
   public void setId(UUID id) {
-    this.game_id = id;
+    this.id = id;
   }
 
   public Date getCreationDateTime() {

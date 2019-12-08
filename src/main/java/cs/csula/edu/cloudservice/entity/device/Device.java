@@ -18,7 +18,7 @@ public class Device {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID device_id;
+  private UUID id;
 
   private String name;
 
@@ -32,11 +32,11 @@ public class Device {
   private User user;
 
   public UUID getId() {
-    return device_id;
+    return id;
   }
 
   public void setId(UUID id) {
-    this.device_id = id;
+    this.id = id;
   }
 
   public String getName() {

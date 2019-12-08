@@ -16,7 +16,7 @@ public class PositionEvent {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  private UUID event_id;
+  private UUID id;
 
   private int x;
   private int y;
@@ -33,11 +33,11 @@ public class PositionEvent {
   private GameSession gameSession;
 
   public UUID getId() {
-    return event_id;
+    return id;
   }
 
   public void setId(UUID id) {
-    this.event_id = id;
+    this.id = id;
   }
 
   public int getX() {
