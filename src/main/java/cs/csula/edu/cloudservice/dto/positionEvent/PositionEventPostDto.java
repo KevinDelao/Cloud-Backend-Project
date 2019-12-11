@@ -4,9 +4,9 @@ import javax.validation.constraints.NotEmpty;
 
 public class PositionEventPostDto {
 
-  private int x;
-  private int y;
-  private int z;
+  private float x;
+  private float y;
+  private float z;
 
   @NotEmpty
   private String deviceId;
@@ -14,27 +14,27 @@ public class PositionEventPostDto {
   @NotEmpty
   private String gameSessionId;
 
-  public int getX() {
+  public float getX() {
     return x;
   }
 
-  public void setX(int x) {
+  public void setX(float x) {
     this.x = x;
   }
 
-  public int getY() {
+  public float getY() {
     return y;
   }
 
-  public void setY(int y) {
+  public void setY(float y) {
     this.y = y;
   }
 
-  public int getZ() {
+  public float getZ() {
     return z;
   }
 
-  public void setZ(int z) {
+  public void setZ(float z) {
     this.z = z;
   }
 
