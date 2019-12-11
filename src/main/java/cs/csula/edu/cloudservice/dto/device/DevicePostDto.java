@@ -4,7 +4,6 @@ import javax.validation.constraints.NotEmpty;
 
 public class DevicePostDto {
 
-  @NotEmpty
   private String userId;
   @NotEmpty
   private String name;

@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.entity.user;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import java.util.List;
@@ -19,6 +20,7 @@ public class User {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @JsonProperty("userId")
   private UUID id;
 
   @Column(unique = true)

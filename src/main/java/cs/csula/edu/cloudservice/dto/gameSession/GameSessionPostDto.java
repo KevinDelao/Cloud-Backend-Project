@@ -6,6 +6,7 @@ public class GameSessionPostDto {
 
   @NotEmpty
   private String userId;
+
   String calibrationStage;
   int score;
 

@@ -63,9 +63,11 @@ public class UserService {
 
   public List<User> getAll() {
     return userRepository.findAll();
+
   }
 
-  public List<GameSession> getGameSessionByUserId(UUID userId) {
+  public List<GameSession> getGameSessionByUserId(UUID userId)
+  {
     Optional<User> userOpt = userRepository.findById(userId);
 
     if (!userOpt.isPresent()) {

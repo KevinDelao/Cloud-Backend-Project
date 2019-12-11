@@ -1,6 +1,7 @@
 package cs.csula.edu.cloudservice.entity.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import cs.csula.edu.cloudservice.entity.device.Device;
 import cs.csula.edu.cloudservice.entity.gamesession.GameSession;
 import java.util.UUID;
@@ -16,6 +17,7 @@ public class PositionEvent {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
+  @JsonProperty("positionEventId")
   private UUID id;
 
   private float x;
