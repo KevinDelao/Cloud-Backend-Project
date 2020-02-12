@@ -2,7 +2,8 @@ package cs.csula.edu.cloudservice.dto.device;
 
 import javax.validation.constraints.NotEmpty;
 
-public class DevicePostDto {
+public class DevicePostDto
+{
 
   private String userId;
   @NotEmpty

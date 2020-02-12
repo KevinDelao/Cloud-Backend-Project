@@ -11,8 +11,11 @@ import cs.csula.edu.cloudservice.repository.DeviceRepository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
+
+import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+import org.springframework.util.Assert;
 
 @Service
 public class DeviceService {
@@ -28,7 +31,8 @@ public class DeviceService {
   private List<DevicePostDto> deviceList;
 
   public DeviceService(DeviceRepository deviceRepository, UserService userService,
-      ModelMapper modelMapper) {
+      ModelMapper modelMapper)
+  {
     this.deviceRepository = deviceRepository;
     this.userService = userService;
     this.modelMapper = modelMapper;
@@ -69,12 +73,8 @@ public class DeviceService {
   }
 
   public List<Device> getAll() {
-//    //remove any previous elements
-//    deviceList.clear();
-//    for (int i = 0; i < deviceRepository.findAll().size(); i++) {
-//      DevicePostDto userPost = modelMapper.map(deviceRepository.findAll().get(i), DevicePostDto.class);
-//      deviceList.add(userPost);
-//    }
+
     return deviceRepository.findAll();
   }
+
 }
