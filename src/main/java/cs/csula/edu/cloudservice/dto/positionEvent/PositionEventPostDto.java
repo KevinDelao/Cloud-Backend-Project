@@ -7,6 +7,59 @@ public class PositionEventPostDto {
   private float x;
   private float y;
   private float z;
+  private float xRot;
+  private float yRot;
+  private float zRot;
+  private float xRotVel;
+  private float yRotVel;
+  private float zRotVel;
+  public float getxRot() {
+    return xRot;
+  }
+
+  public void setxRot(float xRot) {
+    this.xRot = xRot;
+  }
+
+  public float getyRot() {
+    return yRot;
+  }
+
+  public void setyRot(float yRot) {
+    this.yRot = yRot;
+  }
+
+  public float getzRot() {
+    return zRot;
+  }
+
+  public void setzRot(float zRot) {
+    this.zRot = zRot;
+  }
+
+  public float getxRotVel() {
+    return xRotVel;
+  }
+
+  public void setxRotVel(float xRotVel) {
+    this.xRotVel = xRotVel;
+  }
+
+  public float getyRotVel() {
+    return yRotVel;
+  }
+
+  public void setyRotVel(float yRotVel) {
+    this.yRotVel = yRotVel;
+  }
+
+  public float getzRotVel() {
+    return zRotVel;
+  }
+
+  public void setzRotVel(float zRotVel) {
+    this.zRotVel = zRotVel;
+  }
 
   @NotEmpty
   private String deviceId;
