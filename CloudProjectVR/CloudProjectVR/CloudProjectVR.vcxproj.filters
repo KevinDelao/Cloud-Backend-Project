@@ -18,9 +18,15 @@
     <ClCompile Include="..\CppRestRequestExampleAutoVive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="..\VRFunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\openvr.h">
+    <ClInclude Include="..\vrfunctions.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="..\curlfunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
