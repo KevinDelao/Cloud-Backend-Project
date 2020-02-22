@@ -141,7 +141,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\CppRestRequestExampleAutoVive.cpp" />
-    <ClCompile Include="..\VRFunctions.cpp" />
+    <ClCompile Include="..\curlfunctions.cpp" />
+    <ClCompile Include="..\vrfunctions.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\curlfunctions.h" />

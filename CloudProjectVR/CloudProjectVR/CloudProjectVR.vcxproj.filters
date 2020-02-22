@@ -18,7 +18,10 @@
     <ClCompile Include="..\CppRestRequestExampleAutoVive.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\VRFunctions.cpp">
+    <ClCompile Include="..\vrfunctions.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="..\curlfunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
