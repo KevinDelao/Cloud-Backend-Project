@@ -1,2 +1,6 @@
 ﻿  CppRestRequestExampleAutoVive.cpp
+C:\Users\Omar\Documents\Visual Studio 2019\CloudVR\CloudProjectVR\curlfunctions.h(20,1): warning C4102: 'std': unreferenced label
+  curlfunctions.cpp
+C:\Users\Omar\Documents\Visual Studio 2019\CloudVR\CloudProjectVR\curlfunctions.h(20,1): warning C4102: 'std': unreferenced label
+  Generating Code...
   CloudProjectVR.vcxproj -> C:\Users\Omar\Documents\Visual Studio 2019\CloudVR\CloudProjectVR\Debug\CloudProjectVR.exe
