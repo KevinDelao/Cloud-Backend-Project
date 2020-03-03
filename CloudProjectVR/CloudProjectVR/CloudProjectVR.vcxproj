@@ -91,7 +91,7 @@
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Omar\Documents\Visual Studio 2019\CloudVR\CloudProjectVR\Libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>C:\Users\ocoju\Documents\Visual Studio 2019\CloudProjectVR\Libraries;C:\Users\Omar\Documents\Visual Studio 2019\CloudVR\CloudProjectVR\Libraries;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>openvr_api.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -150,6 +150,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="..\openvr_api.dll" />
+    <None Include="openvr_api.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
